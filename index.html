@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Digital | AB Representações</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .category-active { background-color: #1e3a8a; color: #ffffff; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Cabeçalho -->
+  <header class="bg-blue-900 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+      <div>
+        <h1 class="text-2xl font-bold tracking-tight">AB REPRESENTAÇÕES</h1>
+        <p class="text-xs text-blue-200">Catálogo Digital de Produtos Comerciais</p>
+      </div>
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <input 
+          type="text" 
+          id="searchInput" 
+          onkeyup="filterProducts()" 
+          placeholder="Pesquisar produto ou código..." 
+          class="w-full md:w-64 px-3 py-2 rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+        >
+      </div>
+    </div>
+  </header>
+
+  <!-- Filtro de Categorias -->
+  <nav class="max-w-6xl mx-auto px-4 py-4 overflow-x-auto">
+    <div class="flex gap-2" id="filterContainer">
+      <button onclick="filterCategory('todos')" class="category-btn category-active px-4 py-1.5 rounded-full text-xs font-semibold border transition">Todos</button>
+      <button onclick="filterCategory('perfis')" class="category-btn bg-white border border-gray-300 text-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-100 transition">Perfis de Alumínio</button>
+      <button onclick="filterCategory('tintas')" class="category-btn bg-white border border-gray-300 text-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-100 transition">Tintas e Acabamentos</button>
+      <button onclick="filterCategory('portas')" class="category-btn bg-white border border-gray-300 text-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-100 transition">Portas e Ferragens</button>
+    </div>
+  </nav>
+
+  <!-- Grelha de Produtos -->
+  <main class="max-w-6xl mx-auto px-4 pb-16">
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Produto 1 -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="perfis" data-title="perfil u de aluminio al-1010 barras 6m">
+        <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=500&q=80" alt="Perfil Alumínio" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Perfis</span>
+              <span class="text-xs text-gray-500 font-mono">Ref: AL-1010</span>
+            </div>
+            <h2 class="font-semibold text-gray-900 text-base leading-tight mb-1">Perfil U de Alumínio Anodizado</h2>
+            <p class="text-xs text-gray-600 mb-4 leading-relaxed">Barra padrão de 6 metros, alta durabilidade e acabamento técnico para esquadrias.</p>
+          </div>
+          <a href="https://wa.me/5586999999999?text=Olá,%20gostaria%20de%20um%20orçamento%20do%20Perfil%20U%20(Ref:%20AL-1010)" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition">
+            <i class="fa-brands fa-whatsapp"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- Produto 2 -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="tintas" data-title="esmalte sintetico brilhante linha industrial lux">
+        <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=500&q=80" alt="Tintas" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider bg-orange-100 text-orange-800 px-2 py-0.5 rounded">Tintas</span>
+              <span class="text-xs text-gray-500 font-mono">Ref: TN-2040</span>
+            </div>
+            <h2 class="font-semibold text-gray-900 text-base leading-tight mb-1">Esmalte Sintético Premium</h2>
+            <p class="text-xs text-gray-600 mb-4 leading-relaxed">Secagem rápida, alto rendimento para superfícies metálicas e madeira comercial.</p>
+          </div>
+          <a href="https://wa.me/5586999999999?text=Olá,%20gostaria%20de%20um%20orçamento%20do%20Esmalte%20Sintético%20(Ref:%20TN-2040)" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition">
+            <i class="fa-brands fa-whatsapp"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- Produto 3 -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="portas" data-title="kit porta aluminio acessorios centrais">
+        <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Portas" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Portas</span>
+              <span class="text-xs text-gray-500 font-mono">Ref: PT-8800</span>
+            </div>
+            <h2 class="font-semibold text-gray-900 text-base leading-tight mb-1">Kit Fechadura e Acessórios</h2>
+            <p class="text-xs text-gray-600 mb-4 leading-relaxed">Conjunto completo para montagem de portas e janelas de perfil padrão.</p>
+          </div>
+          <a href="https://wa.me/5586999999999?text=Olá,%20gostaria%20de%20um%20orçamento%20do%20Kit%20Fechadura%20(Ref:%20PT-8800)" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition">
+            <i class="fa-brands fa-whatsapp"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <script>
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title');
+        card.style.display = title.includes(query) ? 'flex' : 'none';
+      });
+    }
+
+    function filterCategory(category) {
+      const cards = document.querySelectorAll('.product-card');
+      const buttons = document.querySelectorAll('.category-btn');
+      
+      buttons.forEach(btn => {
+        btn.classList.remove('category-active', 'bg-blue-900', 'text-white');
+        btn.classList.add('bg-white', 'text-gray-700');
+      });
+      event.target.classList.add('category-active');
+      event.target.classList.remove('bg-white', 'text-gray-700');
+
+      cards.forEach(card => {
+        if (category === 'todos' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
