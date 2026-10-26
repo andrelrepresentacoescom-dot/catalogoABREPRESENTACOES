@@ -3,104 +3,283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo Digital | AB Representações</title>
+  <title>AB Representações | Catálogo Digital Comercial</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .category-active { background-color: #1e3a8a; color: #ffffff; }
+    .cat-active {
+      background-color: #1e3a8a !important;
+      color: #ffffff !important;
+      border-color: #1e3a8a !important;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
 
-  <!-- Cabeçalho -->
-  <header class="bg-blue-900 text-white shadow-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
-      <div>
-        <h1 class="text-2xl font-bold tracking-tight">AB REPRESENTAÇÕES</h1>
-        <p class="text-xs text-blue-200">Catálogo Digital de Produtos Comerciais</p>
+  <!-- CABEÇALHO -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      
+      <div class="text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <i class="fa-solid fa-boxes-stacked text-blue-500 text-xl"></i>
+          <h1 class="text-2xl font-black tracking-wide text-white">AB REPRESENTAÇÕES</h1>
+        </div>
+        <p class="text-xs text-gray-400 mt-0.5">Construção Civil • Elétrica • Tintas • Agro & Indústria</p>
       </div>
-      <div class="flex items-center gap-3 w-full md:w-auto">
-        <input 
-          type="text" 
-          id="searchInput" 
-          onkeyup="filterProducts()" 
-          placeholder="Pesquisar produto ou código..." 
-          class="w-full md:w-64 px-3 py-2 rounded-lg text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
-        >
+
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs">
+        <a href="https://wa.me/5586998229519" target="_blank" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg font-semibold transition shadow-sm">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Comercial: (86) 99822-9519
+        </a>
+        <a href="https://wa.me/5586999556931" target="_blank" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-gray-200 px-3 py-2 rounded-lg transition border border-slate-700">
+          <i class="fa-solid fa-phone text-xs"></i> Escritório: (86) 99955-6931
+        </a>
+        <a href="mailto:andrelrepresentacoescom@gmail.com" class="hidden lg:flex items-center gap-1.5 text-gray-400 hover:text-white px-2 py-1 transition">
+          <i class="fa-regular fa-envelope"></i> andrelrepresentacoescom@gmail.com
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Barra de Pesquisa -->
+    <div class="bg-slate-800/80 px-4 py-2.5 border-t border-slate-700/60">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div class="relative w-full max-w-md">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-400 text-xs"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            onkeyup="filterProducts()" 
+            placeholder="Buscar por marca, categoria ou produto..." 
+            class="w-full pl-9 pr-4 py-1.5 text-xs rounded-md bg-slate-900 border border-slate-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+        </div>
+        <span class="text-[11px] text-gray-400 hidden sm:inline">Teresina - PI e Região</span>
       </div>
     </div>
   </header>
 
-  <!-- Filtro de Categorias -->
-  <nav class="max-w-6xl mx-auto px-4 py-4 overflow-x-auto">
-    <div class="flex gap-2" id="filterContainer">
-      <button onclick="filterCategory('todos')" class="category-btn category-active px-4 py-1.5 rounded-full text-xs font-semibold border transition">Todos</button>
-      <button onclick="filterCategory('perfis')" class="category-btn bg-white border border-gray-300 text-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-100 transition">Perfis de Alumínio</button>
-      <button onclick="filterCategory('tintas')" class="category-btn bg-white border border-gray-300 text-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-100 transition">Tintas e Acabamentos</button>
-      <button onclick="filterCategory('portas')" class="category-btn bg-white border border-gray-300 text-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-100 transition">Portas e Ferragens</button>
+  <!-- BANNER CATÁLOGOS EM PDF -->
+  <section class="max-w-7xl mx-auto px-4 mt-6">
+    <div class="bg-gradient-to-r from-blue-950 to-slate-900 rounded-xl p-5 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm border border-blue-900/50">
+      <div>
+        <h2 class="text-base font-bold flex items-center gap-2">
+          <i class="fa-solid fa-file-pdf text-red-500"></i> Catálogos e Tabelas Comerciais Disponíveis
+        </h2>
+        <p class="text-xs text-gray-300 mt-1">Clique no botão vermelho de cada card para abrir o catálogo em PDF ou solicite orçamentos diretos pelo WhatsApp.</p>
+      </div>
+      <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20receber%20a%20tabela%20comercial%20atualizada%20das%20representadas." target="_blank" class="bg-white hover:bg-gray-100 text-slate-900 text-xs font-bold px-4 py-2.5 rounded-lg whitespace-nowrap transition flex items-center gap-2 shadow-sm">
+        <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Falar com Representante
+      </a>
     </div>
-  </nav>
+  </section>
 
-  <!-- Grelha de Produtos -->
-  <main class="max-w-6xl mx-auto px-4 pb-16">
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- FILTROS POR MARCA -->
+  <section class="max-w-7xl mx-auto px-4 mt-6">
+    <div class="flex items-center gap-2 overflow-x-auto pb-2" id="filterContainer">
+      <button onclick="filterCategory('todos')" class="cat-btn cat-active px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap transition">
+        Todas as Marcas
+      </button>
+      <button onclick="filterCategory('tintas-lux')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Tintas Lux
+      </button>
+      <button onclick="filterCategory('pluzie')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Pluzie Elétricos
+      </button>
+      <button onclick="filterCategory('grupo-force')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Grupo Force
+      </button>
+      <button onclick="filterCategory('infibra')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Infibra
+      </button>
+      <button onclick="filterCategory('cercamp')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Cercamp
+      </button>
+      <button onclick="filterCategory('nordestin')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Nordestin
+      </button>
+      <button onclick="filterCategory('solut-quimica')" class="cat-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 whitespace-nowrap hover:bg-gray-100 transition">
+        Solut Química
+      </button>
+    </div>
+  </section>
 
-      <!-- Produto 1 -->
-      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="perfis" data-title="perfil u de aluminio al-1010 barras 6m">
-        <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=500&q=80" alt="Perfil Alumínio" class="w-full h-full object-cover">
-        </div>
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-2">
-              <span class="text-[11px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Perfis</span>
-              <span class="text-xs text-gray-500 font-mono">Ref: AL-1010</span>
-            </div>
-            <h2 class="font-semibold text-gray-900 text-base leading-tight mb-1">Perfil U de Alumínio Anodizado</h2>
-            <p class="text-xs text-gray-600 mb-4 leading-relaxed">Barra padrão de 6 metros, alta durabilidade e acabamento técnico para esquadrias.</p>
+  <!-- GRELHA DE PRODUTOS E CATÁLOGOS -->
+  <main class="max-w-7xl mx-auto px-4 mt-6 pb-20">
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+      <!-- ITEM 1: TINTAS LUX -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="tintas-lux" data-search="tintas lux esmalte sintetico premium tinta imobiliaria acabamento">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=500&q=80" alt="Tintas Lux" class="max-h-full object-contain">
           </div>
-          <a href="https://wa.me/5586999999999?text=Olá,%20gostaria%20de%20um%20orçamento%20do%20Perfil%20U%20(Ref:%20AL-1010)" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition">
-            <i class="fa-brands fa-whatsapp"></i> Cotar no WhatsApp
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-800 px-2 py-0.5 rounded">Tintas Lux</span>
+              <span class="text-[11px] text-gray-400 font-mono">Linha Lux</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Esmalte Sintético & Tintas Imobiliárias</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Linha completa de tintas de alto rendimento, seladores e acabamentos técnicos.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="./NOVO%20CATÁLOGO%20DIGITAL%202025.pdf" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20da%20*Tintas%20Lux*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
           </a>
         </div>
       </article>
 
-      <!-- Produto 2 -->
-      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="tintas" data-title="esmalte sintetico brilhante linha industrial lux">
-        <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=500&q=80" alt="Tintas" class="w-full h-full object-cover">
-        </div>
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-2">
-              <span class="text-[11px] font-bold uppercase tracking-wider bg-orange-100 text-orange-800 px-2 py-0.5 rounded">Tintas</span>
-              <span class="text-xs text-gray-500 font-mono">Ref: TN-2040</span>
-            </div>
-            <h2 class="font-semibold text-gray-900 text-base leading-tight mb-1">Esmalte Sintético Premium</h2>
-            <p class="text-xs text-gray-600 mb-4 leading-relaxed">Secagem rápida, alto rendimento para superfícies metálicas e madeira comercial.</p>
+      <!-- ITEM 2: PLUZIE (GOOGLE DRIVE) -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="pluzie" data-search="pluzie materiais eletricos interruptores tomadas placas eletrica">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=500&q=80" alt="Pluzie" class="max-h-full object-contain">
           </div>
-          <a href="https://wa.me/5586999999999?text=Olá,%20gostaria%20de%20um%20orçamento%20do%20Esmalte%20Sintético%20(Ref:%20TN-2040)" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition">
-            <i class="fa-brands fa-whatsapp"></i> Cotar no WhatsApp
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2 py-0.5 rounded">Pluzie</span>
+              <span class="text-[11px] text-gray-400 font-mono">Linha Elétrica</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Interruptores, Tomadas e Placas</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Materiais elétricos de fácil instalação com alta resistência e padrão ABNT.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="https://drive.google.com/file/d/1vmH4sl9Dx_n-IefU9Ijtkxm8jWcLL_eH/view?usp=sharing" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20da%20*Pluzie%20Materiais%20Elétricos*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
           </a>
         </div>
       </article>
 
-      <!-- Produto 3 -->
-      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="portas" data-title="kit porta aluminio acessorios centrais">
-        <div class="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Portas" class="w-full h-full object-cover">
-        </div>
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-2">
-              <span class="text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Portas</span>
-              <span class="text-xs text-gray-500 font-mono">Ref: PT-8800</span>
-            </div>
-            <h2 class="font-semibold text-gray-900 text-base leading-tight mb-1">Kit Fechadura e Acessórios</h2>
-            <p class="text-xs text-gray-600 mb-4 leading-relaxed">Conjunto completo para montagem de portas e janelas de perfil padrão.</p>
+      <!-- ITEM 3: GRUPO FORCE -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="grupo-force" data-search="grupo force ferramentas fixacao construcao civil">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?auto=format&fit=crop&w=500&q=80" alt="Grupo Force" class="max-h-full object-contain">
           </div>
-          <a href="https://wa.me/5586999999999?text=Olá,%20gostaria%20de%20um%20orçamento%20do%20Kit%20Fechadura%20(Ref:%20PT-8800)" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition">
-            <i class="fa-brands fa-whatsapp"></i> Cotar no WhatsApp
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Grupo Force</span>
+              <span class="text-[11px] text-gray-400 font-mono">Linha Force</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Soluções e Ferragens Industriais</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Produtos reforçados para obras, estruturas e distribuição comercial pesada.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="./Catálogo%20Grupo%20Force%20-%20Digital%20(1).pdf" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20do%20*Grupo%20Force*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- ITEM 4: INFIBRA -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="infibra" data-search="infibra caixas d agua telhas fibrocimento reservatorios">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Infibra" class="max-h-full object-contain">
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-cyan-100 text-cyan-800 px-2 py-0.5 rounded">Infibra</span>
+              <span class="text-[11px] text-gray-400 font-mono">Caixas & Telhas</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Caixas d'Água e Telhas de Fibrocimento</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Estruturas em polietileno e fibrocimento para cobertura e armazenamento hidráulico.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="./Catálogo%20Geral%20Infibra%20(1).pdf" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20da%20*Infibra*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- ITEM 5: CERCAMP -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="cercamp" data-search="cercamp telas cercas arames alambrados agro telas soldadas">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=500&q=80" alt="Cercamp" class="max-h-full object-contain">
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Cercamp</span>
+              <span class="text-[11px] text-gray-400 font-mono">Telas & Cercamentos</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Telas Soldadas, Alambrados e Arames</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Sistemas de cercamento para proteção residencial, industrial e agronegócio.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="./Catálogo%20Cercamp%202025.pdf" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20da%20*Cercamp*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- ITEM 6: NORDESTIN -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="nordestin" data-search="nordestin ferramentas utilidades construcao">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Nordestin" class="max-h-full object-contain">
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-orange-100 text-orange-800 px-2 py-0.5 rounded">Nordestin</span>
+              <span class="text-[11px] text-gray-400 font-mono">Linha Regional</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Artigos & Utilidades Nordestin</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Catálogo voltado para o comércio regional com alta demanda e giro de balcão.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="./Catálogo%20Nordestin%20-%202026%20-%20Digital.pdf" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20da%20*Nordestin*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- ITEM 7: SOLUT QUÍMICA -->
+      <article class="product-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between" data-category="solut-quimica" data-search="solut quimica impermeabilizantes aditivos solventes quimica obra">
+        <div>
+          <div class="h-44 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Solut Química" class="max-h-full object-contain">
+          </div>
+          <div class="p-4">
+            <div class="flex justify-between items-start gap-2 mb-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-800 px-2 py-0.5 rounded">Solut Química</span>
+              <span class="text-[11px] text-gray-400 font-mono">Química da Construção</span>
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug">Impermeabilizantes, Aditivos e Solventes</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-2">Compostos químicos especiais para tratamento de superfícies e vedação técnica.</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0 space-y-2">
+          <a href="./Catálogo%20Solut%202025.pdf" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-file-pdf text-sm"></i> Ver Catálogo Completo (PDF)
+          </a>
+          <a href="https://wa.me/5586998229519?text=Olá,%20gostaria%20de%20uma%20cotação%20para%20produtos%20da%20*Solut%20Química*." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Cotar no WhatsApp
           </a>
         </div>
       </article>
@@ -108,26 +287,41 @@
     </div>
   </main>
 
+  <!-- RODAPÉ -->
+  <footer class="bg-slate-900 text-gray-400 border-t border-slate-800 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div>
+        <h4 class="text-white font-bold text-base">AB REPRESENTAÇÕES</h4>
+        <p class="text-xs mt-1">Representação Comercial e Distribuição Regional</p>
+        <p class="text-xs mt-0.5 text-gray-500">Teresina - PI e Região Integrada</p>
+      </div>
+      <div class="text-xs space-y-1">
+        <p><i class="fa-brands fa-whatsapp text-emerald-500 mr-1.5"></i> Comercial: (86) 99822-9519</p>
+        <p><i class="fa-solid fa-phone text-blue-400 mr-1.5"></i> Escritório: (86) 99955-6931</p>
+        <p><i class="fa-regular fa-envelope text-gray-400 mr-1.5"></i> andrelrepresentacoescom@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
   <script>
     function filterProducts() {
       const query = document.getElementById('searchInput').value.toLowerCase();
       const cards = document.querySelectorAll('.product-card');
       cards.forEach(card => {
-        const title = card.getAttribute('data-title');
-        card.style.display = title.includes(query) ? 'flex' : 'none';
+        const searchData = card.getAttribute('data-search').toLowerCase();
+        card.style.display = searchData.includes(query) ? 'flex' : 'none';
       });
     }
 
     function filterCategory(category) {
       const cards = document.querySelectorAll('.product-card');
-      const buttons = document.querySelectorAll('.category-btn');
+      const buttons = document.querySelectorAll('.cat-btn');
       
       buttons.forEach(btn => {
-        btn.classList.remove('category-active', 'bg-blue-900', 'text-white');
-        btn.classList.add('bg-white', 'text-gray-700');
+        btn.classList.remove('cat-active');
       });
-      event.target.classList.add('category-active');
-      event.target.classList.remove('bg-white', 'text-gray-700');
+      event.target.classList.add('cat-active');
 
       cards.forEach(card => {
         if (category === 'todos' || card.getAttribute('data-category') === category) {
